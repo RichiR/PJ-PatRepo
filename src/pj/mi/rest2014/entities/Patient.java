@@ -1,4 +1,4 @@
-package pj2014.patrepo.implementations;
+package pj.mi.rest2014.entities;
 
 //import java.util.Date;
 import java.io.Serializable;

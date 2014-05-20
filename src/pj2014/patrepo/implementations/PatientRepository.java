@@ -1,5 +1,8 @@
 package pj2014.patrepo.implementations;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,17 +25,24 @@ public class PatientRepository {
 	@EJB
 	PatientDBServiceRemote patServ; // = new PatientDBService();
 	
-	
-	
-	public Patient[] findPatient(int ID, String firstname, String lastname, Date bday)
+	//Aufruf durch: localhost:8080/einstieg2014/rest/findPat/firstname/Max/lastname/Mustermann/bday/1980-07-01 0000:00:00
+	@GET
+	@Path("/findPat/firstname/{firstname}/lastname/{lastname}/bday/{Bday}")
+	@Produces("application/json")
+	public Patient[] findPatient(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname,@PathParam("Bday") String Bday) throws ParseException
 	{
-		ArrayList<Patient> al_patient = new ArrayList<Patient>();
-		//db search
-		return al_patient.toArray(new Patient[al_patient.size()]);
+		 SimpleDateFormat strToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+			Date bday = strToDate.parse(Bday);
+			ArrayList<Patient> search_patients = new ArrayList<Patient>();
+			//db search
+			search_patients =patServ.findPatientByName( firstname, lastname,bday );
+
+		return search_patients.toArray(new Patient[search_patients.size()]);
 	}
 	
 	@GET
-	@Path("/{VersId}")//stimmt noch nicht mit path param überein
+	@Path("/{VersId}")//stimmt noch nicht mit path param ï¿½berein
 	@Produces("application/json")
 	public Patient findPatientById(@PathParam("VersId") int VersId)
 	{

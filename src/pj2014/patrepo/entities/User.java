@@ -1,4 +1,4 @@
-package pj2014.patrepo.implementations;
+package pj2014.patrepo.entities;
 
 import java.io.Serializable;
 
