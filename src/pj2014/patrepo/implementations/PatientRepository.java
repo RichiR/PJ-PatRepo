@@ -15,8 +15,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import pj.mi.rest2014.entities.Patient;
-import pj.mi.rest2014.services.PatientDBServiceRemote;
+import pj2014.patrepo.entities.Patient;
+import pj2014.dbservices.interfaces.PatientDBServiceRemote;
 import pj2014.patrepo.interfaces.IPatientRepository;
 import pj2014.patrepo.entities.*;
 
