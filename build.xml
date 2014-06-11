@@ -10,6 +10,7 @@
     	<jar destfile="patrepo.war">
     		<fileset dir="./web-src">
     			<include name="**/*.*"/>
+    			<exclude name="**/PatRepoProxyFactory.class"/>
 			</fileset>
     	</jar>
     </target>
@@ -21,6 +22,7 @@
 				<include name="pj2014/patrepo/entities/*.*" />
 				<include name="pj2014/patrepo/interfaces/*.*" />
 				<include name="pj2014/patrepo/implementations/*.*" />
+				<include name="pj2014/patrepo/entities/*.*" />
 			</fileset>
 		</jar>
 	</target>
