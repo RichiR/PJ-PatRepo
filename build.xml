@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="PJ-PatRepo" default="deploy">
 	<property file="build.properties"/>
-    <target name="deploy" depends="pack">
+    <target name="deploy" depends="pack, pack_lib">
         <copy file="patrepo.war" 
         	  tofile="${jboss.path}/standalone/deployments/patrepo.war"/>
     </target>
@@ -10,19 +10,21 @@
     	<jar destfile="patrepo.war">
     		<fileset dir="./web-src">
     			<include name="**/*.*"/>
+    			<exclude name="**/PatRepoProxyFactory.class"/>
 			</fileset>
     	</jar>
     </target>
-<!--
+
 	<target name="pack_lib">
 		<jar destfile="patrepo_client.jar">
 			<fileset dir="./web-src/WEB-INF/classes">
 				<include name="pj2014/patrepo/*.*" />
 				<include name="pj2014/patrepo/interfaces/*.*" />
 				<include name="pj2014/patrepo/implementations/*.*" />
+				<include name="pj2014/patrepo/entities/*.*" />
 			</fileset>
 		</jar>
 	</target>
--->
+
 
 </project>
