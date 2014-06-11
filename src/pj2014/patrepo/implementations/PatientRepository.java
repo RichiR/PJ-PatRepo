@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.ejb.EJB;
+import javax.ejb.Remote;
 import javax.ejb.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,14 +17,15 @@ import javax.ws.rs.Produces;
 
 import pj2014.patrepo.entities.Patient;
 import pj2014.dbservices.interfaces.PatientDBServiceRemote;
-
+import pj2014.patrepo.interfaces.IPatientRepository;
+import pj2014.patrepo.entities.*;
 
 @Singleton
-@Path("/PatientenRepository")
-public class PatientRepository {
+@Remote(IPatientRepository.class)
+public class PatientRepository implements IPatientRepository {
 	
 	@EJB
-	PatientDBServiceRemote patServ; // = new PatientDBService();
+	PatientDBServiceRemote patServ; // = new PatintDBService();
 	
 	//Aufruf durch: localhost:8080/einstieg2014/rest/findPat/firstname/Max/lastname/Mustermann/bday/1980-07-01 0000:00:00
 	@GET

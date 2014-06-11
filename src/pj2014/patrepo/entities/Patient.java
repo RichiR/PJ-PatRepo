@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import pj2014.patrepo.interfaces.IPatient;
+
 @Entity
-public class Patient implements Serializable {
+public class Patient implements Serializable, IPatient {
 
 	private int insuranceId;
 	private String name, firstName;
@@ -25,8 +27,6 @@ public class Patient implements Serializable {
 	//default - Constructor 
 	//public Patient() {}
 	
-	@Id
-  @GeneratedValue
 	public int getId() {
 		return insuranceId;
 	}

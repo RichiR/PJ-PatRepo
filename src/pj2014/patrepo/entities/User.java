@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import pj2014.patrepo.interfaces.IUser;
+
 @Entity
-public class User implements Serializable {
+public class User implements Serializable, IUser {
 	
   private int userId;
   
@@ -25,8 +27,6 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
-	@Id
-  @GeneratedValue
 	public int getUserId() {
 		return userId;
 	}
