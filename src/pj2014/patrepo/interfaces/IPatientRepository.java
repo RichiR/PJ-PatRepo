@@ -1,5 +1,6 @@
 package pj2014.patrepo.interfaces;
 
+import java.text.ParseException;
 import java.util.Date;
 
 import javax.ws.rs.GET;
@@ -16,7 +17,7 @@ public interface IPatientRepository {
 	@GET
 	@Path("/findPat/firstname/{firstname}/lastname/{lastname}/bday/{Bday}")
 	@Produces("application/json")
-	public Patient[] findPatient(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname, @PathParam("Bday") String BDay);
+	public Patient[] findPatient(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname, @PathParam("Bday") String Bday) throws ParseException;
 	
 	@GET
 	@Path("/{VersId}")
