@@ -24,8 +24,13 @@ import pj2014.patrepo.entities.*;
 @Remote(IPatientRepository.class)
 public class PatientRepository implements IPatientRepository {
 	
-	@EJB
+//	@EJB Statt dessen -> Proxy holen wie bei den anderen Integrationsbeispielen
 	PatientDBServiceRemote patServ; // = new PatintDBService();
+	
+	public PatientDBServiceRemote getDBService(){
+		// hier: Proxy holen aus der PatientDBServiceRemote.
+		return null;
+	}
 	
 	//Aufruf durch: localhost:8080/einstieg2014/rest/findPat/firstname/Max/lastname/Mustermann/bday/1980-07-01 0000:00:00
 	@GET
@@ -48,9 +53,11 @@ public class PatientRepository implements IPatientRepository {
 	@Produces("application/json")
 	public Patient findPatientById(@PathParam("VersId") int VersId)
 	{
+		//TODO: wieder einbinden wenn Proxy erstellt
+		//Patient result = patServ.findPatientById(VersId);
+		//return result;
 		
-		Patient result = patServ.findPatientById(VersId);
-		return result;
+		return null;
 		
 		//return findPatient(id, null, null, null)[0];
 	}
@@ -73,7 +80,9 @@ public class PatientRepository implements IPatientRepository {
 		pat.setName(lastname);
 		pat.setGender(gender);
 		//db add
-		patServ.createPatient(pat);
+		//TODO wieder einkommentieren, wenn Proxy erstellt
+		//patServ.createPatient(pat);
+		
 		return true;
 	}
 

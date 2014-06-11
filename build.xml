@@ -18,6 +18,7 @@
 		<jar destfile="patrepo_client.jar">
 			<fileset dir="./web-src/WEB-INF/classes">
 				<include name="pj2014/patrepo/*.*" />
+				<include name="pj2014/patrepo/entities/*.*" />
 				<include name="pj2014/patrepo/interfaces/*.*" />
 				<include name="pj2014/patrepo/implementations/*.*" />
 			</fileset>
