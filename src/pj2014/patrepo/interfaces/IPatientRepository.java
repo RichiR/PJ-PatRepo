@@ -17,7 +17,7 @@ public interface IPatientRepository {
 	@GET
 	@Path("/findPat/firstname/{firstname}/lastname/{lastname}/bday/{Bday}")
 	@Produces("application/json")
-	public Patient[] findPatient(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname, @PathParam("Bday") String Bday) throws ParseException;
+	public Patient[] findPatient(@PathParam("firstname") String firstname, @PathParam("lastname") String lastname, @PathParam("Bday") String Bday) throws ParseException;
 	
 	@GET
 	@Path("/{VersId}")
