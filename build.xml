@@ -6,7 +6,7 @@
         	  tofile="${jboss.path}/standalone/deployments/patrepo.war" />
     </target>
 
-    <target name="pack">
+    <target name="pack"  depends="fetch_dependencies">
     	<jar destfile="patrepo.war">
     		<fileset dir="./web-src">
     			<include name="**/*.*"/>
