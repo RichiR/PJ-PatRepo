@@ -33,9 +33,9 @@ public class PatientRepository implements IPatientRepository {
 	}
 	
 	//Aufruf durch: localhost:8080/einstieg2014/rest/findPat/firstname/Max/lastname/Mustermann/bday/1980-07-01 0000:00:00
-	@GET
+	/*@GET
 	@Path("/findPat/firstname/{firstname}/lastname/{lastname}/bday/{Bday}")
-	@Produces("application/json")
+	@Produces("application/json")*/
 	public Patient[] findPatient(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname, @PathParam("Bday") String Bday) throws ParseException
 	{
 		 SimpleDateFormat strToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -48,9 +48,9 @@ public class PatientRepository implements IPatientRepository {
 		return search_patients.toArray(new Patient[search_patients.size()]);
 	}
 	
-	@GET
+	/*@GET
 	@Path("/{VersId}")//stimmt noch nicht mit path param �berein
-	@Produces("application/json")
+	@Produces("application/json")*/
 	public Patient findPatientById(@PathParam("VersId") int VersId)
 	{
 		//TODO: wieder einbinden wenn Proxy erstellt
@@ -67,8 +67,8 @@ public class PatientRepository implements IPatientRepository {
 	//zu klaeren - wie ist das mit der id - db vergibt id, oder?
 
 	
-	@POST
-	@Path("/createPat")
+	/*@POST
+	@Path("/createPat")*/
 
 
 	public boolean addNewPatient(String firstname, String lastname, Date bday, boolean gender)
