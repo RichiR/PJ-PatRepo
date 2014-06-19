@@ -14,9 +14,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import pj2014.patrepo.entities.Patient;
 import pj2014.dbservices.interfaces.PatientDBServiceRemote;
+import pj2014.dbservices.factories.PatientDBServiceProxyFactory;
 import pj2014.patrepo.interfaces.IPatientRepository;
 import pj2014.patrepo.entities.*;
 
@@ -29,21 +31,25 @@ public class PatientRepository implements IPatientRepository {
 	
 	public PatientDBServiceRemote getDBService(){
 		// hier: Proxy holen aus der PatientDBServiceRemote.
-		return null;
+																							
+		PatientDBServiceRemote proxy = PatientDBServiceProxyFactory.getProxy("http://localhost:8080/dbservices/PatientDBService/");
+		return proxy;
 	}
 	
 	//Aufruf durch: localhost:8080/einstieg2014/rest/findPat/firstname/Max/lastname/Mustermann/bday/1980-07-01 0000:00:00
 	/*@GET
-	@Path("/findPat/firstname/{firstname}/lastname/{lastname}/bday/{Bday}")
+	//@Path("/findPat/firstname/{firstname}/lastname/{lastname}/bday/{Bday}")
+	@Path("/findPat")
 	@Produces("application/json")*/
-	public Patient[] findPatient(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname, @PathParam("Bday") String Bday) throws ParseException
+	//public Patient[] findPatient(@PathParam("firstname") String firstname,@PathParam("lastname") String lastname,@PathParam("Bday") String Bday) throws ParseException
+	public Patient[] findPatient(@QueryParam("firstname") String firstname,@QueryParam("lastname") String lastname,@QueryParam("Bday") String Bday) throws ParseException
 	{
-		 SimpleDateFormat strToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat strToDate = new SimpleDateFormat("yyyy-MM-dd");
 		
-			Date bday = strToDate.parse(Bday);
-			ArrayList<Patient> search_patients = new ArrayList<Patient>();
+		Date bday = strToDate.parse(Bday);
+		ArrayList<Patient> search_patients = new ArrayList<Patient>();
 			//db search
-			search_patients =patServ.findPatientByName( firstname, lastname,bday );
+			search_patients =getDBService().findPatientByName( firstname, lastname,bday );
 
 		return search_patients.toArray(new Patient[search_patients.size()]);
 	}
