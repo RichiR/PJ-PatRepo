@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.QueryParam;
 
 import pj2014.patrepo.entities.Patient;
@@ -27,7 +28,9 @@ public interface IPatientRepository {
 	
 	@POST
 	@Path("/createPat")
-	public boolean addNewPatient(String firstname, String lastname, Date bday, boolean gender);
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Patient addNewPatient(String firstname, String lastname, String bday, String gender);
 	
 	
 

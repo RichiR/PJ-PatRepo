@@ -21,11 +21,11 @@ public interface IPatient {
 	
 	public void setFirstName(String firstName);
 	
-	public Date getBirthDate();
+	public String getBirthDate();
 	
-	public void setBirthDate(Date birthDate);
+	public void setBirthDate(String birthDate);
 	
-	public void setGender(boolean gender);
+	public void setGender(String gender);
 	
-	public boolean getGender();
+	public String getGender();
 }

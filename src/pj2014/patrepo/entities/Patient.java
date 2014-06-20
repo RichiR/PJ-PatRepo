@@ -12,15 +12,13 @@ import pj2014.patrepo.interfaces.IPatient;
 
 @Entity
 public class Patient implements Serializable, IPatient {
-
+	
 	private int insuranceId;
 	private String name, firstName;
-	private boolean gender;
+	private String gender;
 	//TODO: vllt noch gender als Attribut?
 	
-	//TODO evtl. Date statt String ? -> aber String einfacher zum 
-	// Persistieren
-	private Date birthDate;
+	private String birthDate;
 	//TODO auskommentieren wenn Klasse vorhanden (Beziehung nötig? abklären)
 	//private Document[] documents;
 	
@@ -51,19 +49,19 @@ public class Patient implements Serializable, IPatient {
 		this.firstName = firstName;
 	}
 	
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 	
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 	
-	public void setGender(boolean gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	
-	public boolean getGender() {
+	public String getGender() {
 		return gender;
 	}
 }

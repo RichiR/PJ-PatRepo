@@ -50,22 +50,17 @@ public class PatientRepository implements IPatientRepository {
 		ArrayList<Patient> search_patients = new ArrayList<Patient>();
 			//db search
 			search_patients =getDBService().findPatientByName( firstname, lastname,bday );
-
+		
+		System.out.println("HIER Patientenergebnisse: " + search_patients.get(0).getFirstName() + search_patients.get(0).getName());
 		return search_patients.toArray(new Patient[search_patients.size()]);
 	}
 	
-	/*@GET
-	@Path("/{VersId}")//stimmt noch nicht mit path param �berein
-	@Produces("application/json")*/
+
 	public Patient findPatientById(@PathParam("VersId") int VersId)
 	{
-		//TODO: wieder einbinden wenn Proxy erstellt
-		//Patient result = patServ.findPatientById(VersId);
-		//return result;
-		
-		return null;
-		
-		//return findPatient(id, null, null, null)[0];
+		Patient result = getDBService().findPatientById(VersId);
+		return result;
+
 	}
 	
 	
@@ -77,7 +72,7 @@ public class PatientRepository implements IPatientRepository {
 	@Path("/createPat")*/
 
 
-	public boolean addNewPatient(String firstname, String lastname, Date bday, boolean gender)
+	public Patient addNewPatient(String firstname, String lastname, String bday, String gender)
 
 	{
 		Patient pat = new Patient();
@@ -85,11 +80,10 @@ public class PatientRepository implements IPatientRepository {
 		pat.setFirstName(firstname);
 		pat.setName(lastname);
 		pat.setGender(gender);
-		//db add
-		//TODO wieder einkommentieren, wenn Proxy erstellt
-		//patServ.createPatient(pat);
 		
-		return true;
+		return getDBService().createPatient(pat);
+		
+		
 	}
 
 
