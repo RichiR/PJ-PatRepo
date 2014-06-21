@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 import pj2014.patrepo.interfaces.IUser;
 
-@Entity
+
 public class User implements Serializable, IUser {
 	
   private int userId;

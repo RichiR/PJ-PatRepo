@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 import pj2014.patrepo.interfaces.IPatient;
 
-@Entity
+
 public class Patient implements Serializable, IPatient {
 	
 	private int insuranceId;

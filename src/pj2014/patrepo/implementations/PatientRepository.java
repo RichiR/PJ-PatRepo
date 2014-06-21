@@ -49,7 +49,7 @@ public class PatientRepository implements IPatientRepository {
 		Date bday = strToDate.parse(Bday);
 		ArrayList<Patient> search_patients = new ArrayList<Patient>();
 			//db search
-			search_patients =getDBService().findPatientByName( firstname, lastname,bday );
+			search_patients =getDBService().findPatientByName( firstname, lastname,/*bday*/ Bday );
 		
 		System.out.println("HIER Patientenergebnisse: " + search_patients.get(0).getFirstName() + search_patients.get(0).getName());
 		return search_patients.toArray(new Patient[search_patients.size()]);
