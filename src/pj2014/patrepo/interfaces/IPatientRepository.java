@@ -1,8 +1,11 @@
 package pj2014.patrepo.interfaces;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Query;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -30,8 +33,12 @@ public interface IPatientRepository {
 	@Path("/createPat")
 	@Consumes("application/json")
 	@Produces("application/json")
-	public Patient addNewPatient(String firstname, String lastname, String bday, String gender);
+	public Patient addNewPatient(Patient pat);
 	
+	@GET
+	@Path("/allPatients")
+	@Produces("application/json")
+	public Patient[] getAllPatients();
 	
 
 }

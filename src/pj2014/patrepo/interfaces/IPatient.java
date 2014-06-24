@@ -27,7 +27,7 @@ public interface IPatient {
 	
 	public void setBirthDate(String birthDate);
 	
-	public void setGender(String gender);
+	public void setGender(boolean gender);
 	
-	public String getGender();
+	public boolean getGender();
 }

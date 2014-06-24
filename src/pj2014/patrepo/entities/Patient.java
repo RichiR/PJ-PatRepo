@@ -10,12 +10,12 @@ import javax.persistence.Id;
 
 import pj2014.patrepo.interfaces.IPatient;
 
-
+@Entity
 public class Patient implements Serializable, IPatient {
 	
 	private int insuranceId;
 	private String name, firstName;
-	private String gender;
+	private boolean gender;
 	//TODO: vllt noch gender als Attribut?
 	
 	private String birthDate;
@@ -25,6 +25,8 @@ public class Patient implements Serializable, IPatient {
 	//default - Constructor 
 	//public Patient() {}
 	
+	@Id
+	@GeneratedValue
 	public int getId() {
 		return insuranceId;
 	}
@@ -57,11 +59,11 @@ public class Patient implements Serializable, IPatient {
 		this.birthDate = birthDate;
 	}
 	
-	public void setGender(String gender) {
+	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
 	
-	public String getGender() {
+	public boolean getGender() {
 		return gender;
 	}
 }

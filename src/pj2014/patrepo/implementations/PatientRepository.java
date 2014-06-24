@@ -5,10 +5,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Singleton;
+import javax.persistence.Query;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -31,8 +33,8 @@ public class PatientRepository implements IPatientRepository {
 	
 	public PatientDBServiceRemote getDBService(){
 		// hier: Proxy holen aus der PatientDBServiceRemote.
-																							
-		PatientDBServiceRemote proxy = PatientDBServiceProxyFactory.getProxy("http://localhost:8080/dbservices/PatientDBService/");
+		//http://localhost:8080/dbservices/rest										
+		PatientDBServiceRemote proxy = PatientDBServiceProxyFactory.getProxy("http://localhost:8080/dbservices/rest");
 		return proxy;
 	}
 	
@@ -72,20 +74,24 @@ public class PatientRepository implements IPatientRepository {
 	@Path("/createPat")*/
 
 
-	public Patient addNewPatient(String firstname, String lastname, String bday, String gender)
+	public Patient addNewPatient(Patient pat)
 
 	{
-		Patient pat = new Patient();
+		/*Patient pat = new Patient();
 		pat.setBirthDate(bday);
 		pat.setFirstName(firstname);
 		pat.setName(lastname);
-		pat.setGender(gender);
+		pat.setGender(gender);*/
 		
 		return getDBService().createPatient(pat);
 		
 		
 	}
 
-
+	public Patient[] getAllPatients()
+	{
+	    
+	   return getDBService().getallPatients();
+	 }
 	
 }
